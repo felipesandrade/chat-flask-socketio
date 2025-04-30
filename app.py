@@ -19,9 +19,8 @@ def chat_page():
 
 # Send msg in real time
 @socketio.on("message")
-def handle_message(data):
-    print(f"Received message: {data}")
-    send(data)
+def handle_message(msg):
+    emit('message', msg, broadcast=True)
 
 # Connect to the server
 @socketio.on("connect")
